@@ -41,13 +41,16 @@ let personalMoveDB = {
         }
     },
     writeYouGenres: function() {
-        for (let i = 1; i <= 3; i++) {
-            const genre = prompt(`Ваш любимый жанр под номером ${i}`);
-            if (genre == "" || genre == null) {
+        for (let i = 1; i < 2; i++) {
+            let genres = prompt(
+                `Введите Ваши любимые жанры через запятую: `
+            ).toLowerCase();
+            if (genres == "" || genres == null) {
                 console.log("Error");
                 i--;
             } else {
-                personalMoveDB.genres[i - 1] = genre;
+                personalMoveDB.genres = genres.split(", ");
+                personalMoveDB.genres.sort();
             }
         }
         personalMoveDB.genres.forEach((item, index) => {
